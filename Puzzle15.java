@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Puzzle15 {
 	
-	//Fill The board with 0 to 15 Randomly using random function
+	//Randomly fills the board with numbers from 0 to 15.
 	private static void fillboard(int[][] board) {
 		Random random = new Random();
 		for (int i = 0; i < 16; i++) {
@@ -20,7 +20,7 @@ public class Puzzle15 {
 		print(board);
 	}
 
-	//Print the board
+	// Prints the current state of the board.
 	private static void print(int[][] board) {
 		System.out.println("      0     1     2     3");
 		System.out.print("   -------------------------");
@@ -43,7 +43,7 @@ public class Puzzle15 {
 		}
 	}
  
-	//Manages game flow
+	//Manages the game flow by taking user inputs, validating moves, and checking game completion.
 	private static void startGame(int[][] board) {
 		int userRow = 0, userCol = 0;
 		int zero[] = new int[2];
@@ -78,7 +78,7 @@ public class Puzzle15 {
 		System.out.println("YOU WON THE GAME ヾ(￣▽￣) Bye~Bye~");
 	}
 
-	//swap the empty space with the number given by user
+	//Swaps the empty space with the user-providedc cell.
 	private static int[] swapTheNumber(int[][] board, int zeroRow, int zeroCol, int userRow, int userCol) {
 		int zero[] = new int[2];
 		int temp = board[userRow][userCol];
@@ -89,7 +89,7 @@ public class Puzzle15 {
 		return zero;
 	}
 
-	//user whether the userinput is a possible move or not
+	//Validates if the user's input is a possible move.
 	private static boolean checkUserInputOnList(List<List<Integer>> possibleMove, int userRow, int userCol) {
 		for (List<Integer> move : possibleMove) {
 			int targetRow = move.get(0);
@@ -101,7 +101,7 @@ public class Puzzle15 {
 		return false;
 	}
 
-	//check whether all the element are in correct position, if it true the game completes
+	//Checks if all elements are in the correct order for game completion.
 	private static boolean checkIfAllElementAreInPlace(int[][] board) {
 		int num = 1;
 		for (int i = 0; i < 4; i++) {
@@ -115,7 +115,7 @@ public class Puzzle15 {
 		return true;
 	}
 
-	//get input from the user and check if the number is valid or not
+	//Takes user input for row and column indices.
 	private static int getInputFromUser(int n) {
 		Scanner sc = new Scanner(System.in);
 		if (n == 1)
@@ -132,7 +132,7 @@ public class Puzzle15 {
 		return num;
 	}
 
-	//find the possible next move 
+	// Finds possible moves around the empty space.
 	private static List<List<Integer>> findPossibleMoves(int[][] board, int row, int col,
 			List<List<Integer>> possibleMove) {
 		if (row - 1 >= 0)
@@ -146,7 +146,7 @@ public class Puzzle15 {
 		return possibleMove;
 	}
 
-	//find the zero's position
+	//Finds the position of the empty space (0) on the board.
 	private static int[] findZero(int[][] board, int[] zero) {
 		outerloop: for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
